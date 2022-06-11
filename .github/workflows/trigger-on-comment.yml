@@ -14,3 +14,6 @@ jobs:
     steps:
     - name: Testing testing
       run: echo "This was triggered by ${GITHUB_ACTOR}."
+
+    - name: Check out repository code
+      uses: actions/checkout@v3
