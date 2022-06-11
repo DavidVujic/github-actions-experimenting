@@ -5,10 +5,16 @@ on:
     types:
     - created
 
+env:
+  is-pull-request: ${{ github.event.issue.pull_request }}
+  comment: ${{ github.event.comment.body }}
+  deploy-test: format('{0}octocat{0} deploy test', ':')
+  deploy-stage: format('{0}octocat{0} deploy stage', ':')
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event.issue.pull_request && github.event.comment.body == format('{0}octocat{0} deploy', ':') }}
+    if: ${{ env.is-pull-request && env.comment == env.deploy-test }}
     steps:
     - name: Testing testing
-      run: echo "I was run on demand by ${GITHUB_ACTOR}"
+      run: echo "I was run on demand by ${GITHUB_ACTOR}. Is PR $is-pull-request comment $comment match $deploy-test"
