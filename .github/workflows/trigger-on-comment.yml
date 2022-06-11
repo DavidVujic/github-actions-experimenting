@@ -13,4 +13,4 @@ jobs:
       startsWith(github.event.comment.body, '/deploy-test')
     steps:
     - name: Testing testing
-      run: echo "Run by ${GITHUB_ACTOR}."
+      run: echo "This was triggered by ${GITHUB_ACTOR}."
