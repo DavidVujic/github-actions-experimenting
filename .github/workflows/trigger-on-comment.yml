@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       ${{ github.event.issue.pull_request }} &&
-      github.event.comment.body == format('{0}octocat{0} deploy', ':'))
+      ${{ github.event.comment.body }} == format('{0}octocat{0} deploy', ':'))
     steps:
     - name: Testing testing
       run: |
