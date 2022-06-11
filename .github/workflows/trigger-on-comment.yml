@@ -1,8 +1,12 @@
-on: issue_comment
+name: Deploy
+
+on:
+  issue_comment:
+    types:
+    - created
 
 jobs:
-  commented:
-    name: Pull Request comment
+  deploy:
     runs-on: ubuntu-latest
     if: ${{ github.event.issue.pull_request && github.event.comment.body == 'deploy'}}
     steps:
