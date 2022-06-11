@@ -11,6 +11,4 @@ jobs:
       env.body == format('{0}octocat{0} deploy', ':'))
     steps:
     - name: Testing testing
-      run: |
-        echo "I was run on demand by ${GITHUB_ACTOR}"
-        echo "The comment was ${env.body}"
+      run: echo "I was run on demand by ${GITHUB_ACTOR}"
