@@ -1,0 +1,14 @@
+on: issue_comment
+
+jobs:
+  commented:
+    name: Pull Request comment
+    runs-on: ubuntu-latest
+    if: |
+      ${{ github.event.issue.pull_request }} &&
+      github.event.comment.body == format('{0}octocat{0} deploy', ':'))
+    steps:
+    - name: Testing testing
+      run: |
+        echo I was run on demand by ${GITHUB_ACTOR}
+        echo The comment was ${github.event.comment.body}
