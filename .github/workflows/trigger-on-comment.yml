@@ -5,16 +5,12 @@ on:
     types:
     - created
 
-env:
-  is_pull_request: ${{ github.event.issue.pull_request }}
-  comment: ${{ github.event.comment.body }}
-  deploy_test: format('{0}octocat{0} deploy test', ':')
-  deploy_stage: format('{0}octocat{0} deploy stage', ':')
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event.issue.pull_request && env.comment == env.deploy_test }}
+    if: |
+      github.event.issue.pull_request &&
+      startsWith(github.event.comment.body, '/deploy-test')
     steps:
     - name: Testing testing
-      run: echo "I was run on demand by ${GITHUB_ACTOR}. Comment $comment Match $deploy_test"
+      run: echo "Run by ${GITHUB_ACTOR}."
