@@ -17,4 +17,4 @@ jobs:
     if: ${{ env.is-pull-request && env.comment == env.deploy-test }}
     steps:
     - name: Testing testing
-      run: echo "I was run on demand by ${GITHUB_ACTOR}. Is PR $is-pull-request comment $comment match $deploy-test"
+      run: echo "I was run on demand by ${GITHUB_ACTOR}. Is PR?g $is-pull-request comment $comment match $deploy-test"
