@@ -8,8 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event.issue.pull_request }}
-    if: ${{ github.event.comment.body == format('{0}octocat{0} deploy', ':') }}
+    if: ${{ github.event.issue.pull_request && github.event.comment.body == format('{0}octocat{0} deploy', ':') }}
     steps:
     - name: Testing testing
       run: echo "I was run on demand by ${GITHUB_ACTOR} and the body is ${env.body}"
